@@ -1,38 +1,6 @@
 from pathlib import Path
 
 base = Path("dataset")
-
-c10_required = [
-    "data_batch_1", "data_batch_2", "data_batch_3", "data_batch_4",
-    "data_batch_5", "test_batch", "batches.meta", "readme.html"
-]
-
-c100_required = ["train", "test", "meta", "file.txt~"]
-
-def check_folder(folder, required):
-    missing = [name for name in required if not (folder / name).exists()]
-    return missing
-
-c10_missing = check_folder(base / "cifar10", c10_required)
-c100_missing = check_folder(base / "cifar100", c100_required)
-
-if not c10_missing and not c100_missing:
-    print("All required dataset files are present.")
-    exit(0)
-else: 
-    if c10_missing:
-        print("Missing files in 'dataset/cifar10/':")
-        for name in c10_missing:
-            print(f" - {name}")
-    if c100_missing:
-        print("Missing files in 'dataset/cifar100/':")
-        for name in c100_missing:
-            print(f" - {name}")
-    exit(1)
-
-from pathlib import Path
-
-base = Path("dataset")
 cifar10 = base / "cifar10"
 cifar100 = base / "cifar100"
 
